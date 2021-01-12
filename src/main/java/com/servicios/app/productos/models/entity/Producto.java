@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,6 +28,9 @@ public class Producto implements Serializable {
 	@Column(name = "created_at")
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;
+	
+	@Transient //indica que no será mapeado en bd y no es persistente
+	private Integer port;
   
 	public Long getId() {
 		return id;
@@ -36,6 +40,14 @@ public class Producto implements Serializable {
 		this.id = id;
 	};
 	
+	public Integer getPort() {
+		return port;
+	}
+
+	public void setPort(Integer port) {
+		this.port = port;
+	}
+
 	public String getNombre() {
 		return nombre;
 	};
